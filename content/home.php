@@ -20,7 +20,7 @@ JOIN studio s ON ( s.id = v.studio_id )
 ORDER BY
 	v.created DESC,
 	v.title ASC
-LIMIT 50";
+-- LIMIT 50";
 
 $rows = $db->query($sql);
 foreach($rows as $r) {
