@@ -1,0 +1,11 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+table {
+	border-collapse: collapse;
+}
+td, th { border: 1px solid #AAA; }
+th { white-space: nowrap; }
