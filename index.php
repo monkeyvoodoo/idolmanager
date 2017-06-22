@@ -17,6 +17,7 @@ header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Cache-Control: private", false);
 
 // get the page contents
+$_title = 'Untitled Page';
 ob_start();
 require("./content/{$_page}.php");
 $_body = ob_get_clean();

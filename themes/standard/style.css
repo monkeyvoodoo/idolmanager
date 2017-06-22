@@ -4,8 +4,28 @@ html, body {
 	height: 100%;
 }
 
+a, a:visited {
+	color: #333;
+}
+
 table {
 	border-collapse: collapse;
 }
 td, th { border: 1px solid #AAA; }
 th { white-space: nowrap; }
+
+
+.list-table th, .list-table td {
+	padding-left: .5em;
+	padding-right: .5em;
+}
+
+.list-table th {
+	background-color: #666;
+	color: #FFF;
+	font-size: 14pt;
+}
+
+.code-serial {
+	text-align: right;
+}
