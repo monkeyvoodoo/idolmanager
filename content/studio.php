@@ -1,5 +1,5 @@
 <?php
-$code = $uri[1];
+$code = $_uri[1];
 $_title = "Studio: {$code}";
 
 $sql =

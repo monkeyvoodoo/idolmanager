@@ -1,9 +1,6 @@
 
-		<header>
-			<ul>
-				<li>Some Nav Item</li>
-			</ul>
-		</header>
+		<main>
 
 <?php echo $_body; ?>
 
+		</main>

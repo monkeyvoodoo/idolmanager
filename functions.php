@@ -12,4 +12,11 @@ function message($message, $die = false, $return = false) {
 		if($die) exit;
 	}
 }
+
+function redirect(string $uri, string $httpMessage = null) {
+	if(is_null($httpMessage)) $httpMessage = 'HTTP/1.1 302 Found';
+	header($httpMessage);
+	header("Location: {$uri}");
+	exit;
+}
 ?>

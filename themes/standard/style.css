@@ -1,12 +1,22 @@
+* {
+	font-family: sans-serif;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 }
 
+body {
+	display: table;
+	width: 100%;
+}
+
 a, a:visited {
 	color: #333;
 }
+
 
 table {
 	border-collapse: collapse;
@@ -14,6 +24,78 @@ table {
 td, th { border: 1px solid #AAA; }
 th { white-space: nowrap; }
 
+
+header, main, footer {
+	display: table-row;
+}
+
+header, footer {
+	height: 4em;
+}
+
+nav {
+	display: table;
+	margin: auto;
+	margin-top: 1em;
+}
+
+nav ul {
+	list-style-type: none;
+	display: table-row;
+}
+
+nav ul li {
+	display: table-cell;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+
+.centered-box {
+	display: table;
+	margin: auto;
+	height: 100%;
+}
+
+.centered-box .content {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.fourohfour-image {
+	display: table; /* so we get auto-width */
+	margin: auto; /* so it's centred */
+	width: 853px; /* most of the images i have are gonna be DVD resolution */
+	height: 480px;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 36pt;
+	color: rgba(255, 255, 255, .8);
+	text-transform: uppercase;
+	-webkit-text-stroke: 2px #666;
+	text-stroke: 2px #666;
+	/*
+	text-shadow:
+		-3px -3px 0 #333,  
+		 3px -3px 0 #333,
+		-3px  3px 0 #333,
+		 3px  3px 0 #333;
+	*/
+}
+
+.fourohfour-row {
+	display: table-row;
+}
+
+.fourohfour-row .top {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.fourohfour-row .bottom {
+	display: table-cell;
+	vertical-align: bottom;
+}
 
 .list-table th, .list-table td {
 	padding-left: .5em;
@@ -24,6 +106,11 @@ th { white-space: nowrap; }
 	background-color: #666;
 	color: #FFF;
 	font-size: 14pt;
+}
+
+.list-table .field-label {
+	text-align: right;
+	font-weight: bold;
 }
 
 .code-serial {

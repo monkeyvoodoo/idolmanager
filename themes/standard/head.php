@@ -7,3 +7,17 @@
 	</head>
 
 	<body>
+
+		<header>
+			<nav>
+				<ul>
+<?php
+foreach($_nav as $n) {
+?>
+					<li><a href="<?php echo $n['uri']; ?>"><?php echo htmlspecialchars($n['text']); ?></a></li>
+<?php
+}
+?>
+				</ul>
+			</nav>
+		</header>
