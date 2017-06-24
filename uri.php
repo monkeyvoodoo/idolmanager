@@ -7,7 +7,7 @@ $_uri = $_uri == '' ? array('home') : explode("/", $_uri);
 switch(strtolower($_uri[0])) {
 	case 'auth': $_page = 'auth/handler'; break;
 	case 'home': $_page = 'home'; break;
-	case 'studio': $_page = 'studio'; break;
+	case 'studio': $_page = 'studio/handler'; break;
 	default: $_page = '404';
 }
 $_pageHandler = "./content/{$_page}.php";

@@ -4,8 +4,8 @@ $_title = "Studio: {$code}";
 
 $sql =
 "SELECT
-	s.code AS studio_code,
-	s.name AS studio_name,
+	s.code,
+	s.name,
 	v.serial,
 	v.title,
 	v.created AS added
@@ -34,10 +34,15 @@ if(count($rows) == 0) {
 	<tbody>
 <?php
 	foreach($rows as $r) {
+		$uriCode = '/'.rawurlencode($r['code']);
+		$htmlCode = htmlspecialchars($r['code']);
+		$uriSerial = '/'.rawurlencode($r['serial']);
+		$htmlSerial = htmlspecialchars($r['serial']);
+		$uriItem = "/studio{$uriCode}{$uriSerial}";
 ?>
 		<tr>
-			<td class="code-serial"><?php echo htmlspecialchars($r['serial']); ?></td>
-			<td><?php echo strlen($r['title']) > 0 ? htmlspecialchars($r['title']) : '<i>N/A</i>'; ?></td>
+			<td class="code-serial"><a href="<?php echo $uriItem; ?>" title="View <?php echo "{$htmlCode} {$htmlSerial}"; ?>"><?php echo htmlspecialchars($r['serial']); ?></a></td>
+			<td><a href="<?php echo $uriItem; ?>" title="View <?php echo "{$htmlCode} {$htmlSerial}"; ?>"><?php echo strlen($r['title']) > 0 ? htmlspecialchars($r['title']) : '<i>N/A</i>'; ?></a></td>
 			<td><?php echo date("Y-m-d H:i", strtotime($r['added'])); ?></td>
 		</tr>
 <?php

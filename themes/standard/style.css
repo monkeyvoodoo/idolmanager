@@ -97,6 +97,16 @@ nav ul li {
 	vertical-align: bottom;
 }
 
+#page-path {
+	display: table;
+	margin: auto;
+	margin: 1em auto;
+}
+
+#page-path .path-separator {
+	margin: auto .5em;
+}
+
 .list-table th, .list-table td {
 	padding-left: .5em;
 	padding-right: .5em;

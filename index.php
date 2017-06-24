@@ -5,6 +5,12 @@ error_reporting(E_ALL);
 
 // FIXME: should probably come up with a config file or something?
 $_title = 'Untitled Page'; // in case a page doesn't set the title
+$_pagePath = array( // links for e.g. home / studio / serial
+	array(
+		'text' => 'Idol @ 忍',
+		'uri'  => '' // home doesn't get a URI since it's just /
+	)
+);
 
 require('./functions.php');
 require('./session.php'); // needs functions
