@@ -11,11 +11,11 @@ $sql =
 	v.created AS added
 FROM video v
 JOIN studio s ON ( s.id = v.studio_id )
-WHERE s.code = :code
+WHERE LOWER(s.code) = :code
 ORDER BY v.serial ASC";
 // message(strtr($sql, array(':code' => "'{$code}'")), true);
 
-$rows = $db->query($sql, array(':code' => $code));
+$rows = $db->query($sql, array(':code' => strtolower($code)));
 
 if(count($rows) == 0) {
 ?>

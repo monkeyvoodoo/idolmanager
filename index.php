@@ -17,7 +17,7 @@ require('./session.php'); // needs functions
 require('./uri.php'); // parse the URI into something useful, figure out what page applies
 require('./nav.php'); // needs session
 
-require('./database.php');
+require('./db.pgsql.php');
 $db = new db();
 
 // tell the browser about ourselves (can be overridden in $_page file)
