@@ -9,9 +9,9 @@ class db {
 
 	public function __construct() {
 		$connectString = "host=".file_get_contents('./dbhost')." dbname=idol user=idol password=".file_get_contents('./dbpass');
-		// message($connectString, true);
 		$this->db = pg_connect($connectString);
-		if(false === $this->db) message("Database connection failed");
+
+		if(false === $this->db) message("Could not connect to database", true);
 	}
 
 	// public function prepare(string $sql, $name = 'untitled_query') {

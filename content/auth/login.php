@@ -4,9 +4,12 @@ if(isset($_POST['action']) && $_POST['action'] == 'login') {
 	list($a) = $db->query($sql, array(':login' => $_POST['username']));
 	if(password_verify($_POST['password'], $a['password'])) {
 		$_SESSION['profile'] = $a;
-		redirect('/');
+		$redirectUri = isset($_POST['redirect_uri']) ? $_POST['redirect_uri'] : '/';
+		redirect($redirectUri);
 	}
 }
+
+$redirectUri = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH);
 ?>
 <div class="centered-box">
 	<div class="content">
@@ -29,6 +32,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'login') {
 			</tbody>
 		</table>
 		<div style="text-align:right;margin-top:1em"><button type="submit">Log In</button></div>
+		<input type="hidden" name="redirect_uri" value="<?php echo htmlspecialchars($redirectUri); ?>" />
 		<input type="hidden" name="action" value="login" />
 	</form>
 	</div>

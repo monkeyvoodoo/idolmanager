@@ -126,3 +126,32 @@ nav ul li {
 .code-serial {
 	text-align: right;
 }
+
+.add-tag {
+	float: right;
+}
+
+.tag-parent {
+	font-weight: bold;
+}
+
+.tag-parent div {
+	font-weight: normal;
+	display: inline-block;
+	margin-left: .2em;
+}
+
+#tag-table {
+	margin: auto;
+}
+
+#tag-table .tag-list {
+	padding: .2em 1em;
+}
+
+#tag-table .tag {
+	display: inline-block;
+	border: 1px solid #AAA;
+	background-color: #EEE;
+	padding: 3px;
+}

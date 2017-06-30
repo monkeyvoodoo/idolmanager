@@ -38,8 +38,10 @@ if(substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
         header("Content-Encoding: gzip");
 } else ob_start();
 
-chdir("./themes/standard");
-require('./theme.php');
+if(!isset($_noHtml)) {
+	chdir("./themes/standard");
+	require('./theme.php');
+} else echo $_body;
 
-ob_end_flush(); // barf some html
+ob_end_flush(); // barf some output
 ?>

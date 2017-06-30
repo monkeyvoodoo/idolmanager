@@ -66,6 +66,10 @@ ORDER BY r.path ASC";
 	$htmlSerial = htmlspecialchars($r['serial']);
 	$uriItem    = "/studio{$uriCode}{$uriSerial}";
 	$htmlTitle  = htmlspecialchars($r['title']);
+
+	if(file_exists("./images/{$r['studio_code']}/{$r['serial']}.jpg")) {
+		$coverImage = '<img src="/images'.htmlspecialchars($uriCode).htmlspecialchars($uriSerial).'.jpg" alt="Thumbnail" />';
+	} else $coverImage = '<div style="display:table;width:250px;height:350px;border:1px solid #666;"><div style="display:table-cell;vertical-align:middle;text-align:center;background-color:#EEE">poster/thumb</div></div>';
 ?>
 	<table class="list-table" style="margin:auto">
 		<thead>
@@ -75,15 +79,21 @@ ORDER BY r.path ASC";
 		</thead>
 		<tbody>
 			<tr>
-				<td style="width:250px"><div style="display:table;width:250px;height:350px;border:1px solid #666;"><div style="display:table-cell;vertical-align:middle;text-align:center;background-color:#EEE">poster/thumb</div></div></td>
+				<td style="width:250px"><?php echo $coverImage; ?></td>
 				<td>&lt;meta here&gt;</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					[<a href="/tag/add<?php echo $uriCode.'/'.$uriSerial; ?>">Add a tag</a>]
 <?php
-	// determine number of rows and columns
-echo message($t, false, true);
+	// message($t, false, true);
+	// message(tagNest($t));
+	printTags(tagNest($t));
+
+	if(loggedIn()) {
+?>
+		<div class="add-tag">[<a href="/tag<?php echo htmlspecialchars($uriCode.$uriSerial); ?>/add" title="Add a new tag">Add a tag</a>]</div>
+<?php
+	}
 ?>
 				</td>
 			</tr>
