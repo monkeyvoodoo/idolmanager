@@ -51,6 +51,10 @@ nav ul li {
 }
 
 
+.data {
+	display: none;
+}
+
 .centered-box {
 	display: table;
 	margin: auto;
@@ -121,6 +125,71 @@ nav ul li {
 .list-table .field-label {
 	text-align: right;
 	font-weight: bold;
+}
+
+#serial-table .meta-container {
+	vertical-align: top;
+}
+
+#rating-stars {
+	display: table;
+	margin: auto;
+}
+
+#rating-stars.no-rating .star {
+	color: #666;
+}
+
+#rating-stars.rating-1 [data-starcount="1"] {
+	color: #fd0;
+}
+
+#rating-stars.rating-2 [data-starcount="1"],
+#rating-stars.rating-2 [data-starcount="2"] {
+	color: #fd0;
+}
+
+#rating-stars.rating-3 [data-starcount="1"],
+#rating-stars.rating-3 [data-starcount="2"],
+#rating-stars.rating-3 [data-starcount="3"] {
+	color: #fd0;
+}
+
+#rating-stars.rating-4 [data-starcount="1"],
+#rating-stars.rating-4 [data-starcount="2"],
+#rating-stars.rating-4 [data-starcount="3"],
+#rating-stars.rating-4 [data-starcount="4"] {
+	color: #fd0;
+}
+
+#rating-stars.rating-5 [data-starcount="1"],
+#rating-stars.rating-5 [data-starcount="2"],
+#rating-stars.rating-5 [data-starcount="3"],
+#rating-stars.rating-5 [data-starcount="4"],
+#rating-stars.rating-5 [data-starcount="5"] {
+	color: #fd0;
+}
+
+#rating-stars.hovering [data-starcount="1"],
+#rating-stars.hovering [data-starcount="2"],
+#rating-stars.hovering [data-starcount="3"],
+#rating-stars.hovering [data-starcount="4"],
+#rating-stars.hovering [data-starcount="5"] {
+	color: #aaa;
+}
+
+.star {
+	color: #aaa;
+	display: table-cell;
+	display: inline-block;
+}
+
+.star.lit {
+	color: #fd0 !important;
+}
+
+.star:hover {
+	cursor: pointer;
 }
 
 .code-serial {

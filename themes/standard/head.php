@@ -4,6 +4,18 @@
 		<meta charset="utf-8">
 		<title>Idol @ 忍<?php echo strlen($_title) > 0 ? ' — '.htmlspecialchars($_title) : ''; ?></title>
 		<link rel="stylesheet" href="/themes/standard/style.css" type="text/css" media="all" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<?php
+if(isset($_pageJavascript)) {
+	if(!is_array($_pageJavascript)) $_pageJavascript = array($_pageJavascript);
+	foreach($_pageJavascript as $_jsUri) {
+?>
+		<script src="<?php echo $_jsUri; ?>"></script>
+<?php
+	}
+}
+?>
 	</head>
 
 	<body>

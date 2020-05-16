@@ -16,6 +16,6 @@ if(isset($_uri[3]) && strlen($_uri[3]) > 0) {
 	if(false !== $db->query($sql, array(':user_id' => $userId, ':video_id' => $videoId, ':rating' => $rating))) $status = 'OK';
 	else $status = 'ERROR';
 
-	echo json_encode((object) array('status' => $status));
+	echo json_encode((object) array('status' => $status, 'rating' => $rating));
 }
 ?>

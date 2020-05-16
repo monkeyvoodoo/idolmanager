@@ -1,4 +1,5 @@
 <?php
+$_pageJavascript = '/content/studio/serial.js';
 array_push($_pagePath, array('text' => $serial, 'uri' => $serial));
 
 $sql =
@@ -10,9 +11,13 @@ $sql =
 	v.created,
 	s.id AS studio_id,
 	s.code AS studio_code,
-	s.name AS studio_name
+	s.name AS studio_name,
+	ru.rating AS stars_user,
+	ra.rating AS stars_average
 FROM video v
 JOIN studio s ON ( s.id = v.studio_id )
+LEFT JOIN rating ru ON ( ru.video_id = v.id )
+LEFT JOIN ( SELECT video_id, AVG(rating::integer) AS rating FROM rating GROUP BY video_id ) ra ON ( ra.video_id = v.id )
 WHERE
 	LOWER(s.code) = :code AND
 	LOWER(v.serial) = :serial";
@@ -66,12 +71,17 @@ ORDER BY r.path ASC";
 	$htmlSerial = htmlspecialchars($r['serial']);
 	$uriItem    = "/studio{$uriCode}{$uriSerial}";
 	$htmlTitle  = htmlspecialchars($r['title']);
+	$starsUser  = $r['stars_user'];
+	$starsAvg   = $r['stars_average'];
 
 	if(file_exists("./images/{$r['studio_code']}/{$r['serial']}.jpg")) {
 		$coverImage = '<img src="/images'.htmlspecialchars($uriCode).htmlspecialchars($uriSerial).'.jpg" alt="Thumbnail" />';
 	} else $coverImage = '<div style="display:table;width:250px;height:350px;border:1px solid #666;"><div style="display:table-cell;vertical-align:middle;text-align:center;background-color:#EEE">poster/thumb</div></div>';
 ?>
-	<table class="list-table" style="margin:auto">
+	<div class="data" id="code"><?php echo $htmlCode; ?></div>
+	<div class="data" id="serial"><?php echo $htmlSerial; ?></div>
+
+	<table id="serial-table" class="list-table" style="margin:auto">
 		<thead>
 			<tr>
 				<th colspan="2"><?php echo "{$htmlCode} {$htmlSerial} — {$htmlTitle}"; ?></th>
@@ -80,7 +90,16 @@ ORDER BY r.path ASC";
 		<tbody>
 			<tr>
 				<td style="width:250px"><?php echo $coverImage; ?></td>
-				<td>&lt;meta here&gt;</td>
+				<td class="meta-container">
+					<div id="rating-stars" class="<?php echo ($starsUser == '0') ? 'rating-none' : "rating-{$starsUser}"; ?>">
+						<div class="star" data-starcount="1">★</div>
+						<div class="star" data-starcount="2">★</div>
+						<div class="star" data-starcount="3">★</div>
+						<div class="star" data-starcount="4">★</div>
+						<div class="star" data-starcount="5">★</div>
+					</div>
+					<div><?php echo $starsUser.'/'.$starsAvg; ?></div>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
